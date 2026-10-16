@@ -1,0 +1,36 @@
+Router Configuration — Accounts and Delivery Network
+====================================================
+
+! Enter privileged EXEC mode
+enable
+
+! Enter global configuration mode
+configure terminal
+
+! Configure Accounts Department interface
+interface GigabitEthernet0/0
+ description Accounts_Department
+ ip address 192.168.40.1 255.255.255.128
+ no shutdown
+ exit
+
+! Configure Delivery Department interface
+interface GigabitEthernet0/1
+ description Delivery_Department
+ ip address 192.168.40.129 255.255.255.128
+ no shutdown
+ exit
+
+! Save the configuration
+end
+write memory
+
+! Verify router interfaces
+show ip interface brief
+
+! Verify routing table
+show ip route
+
+! Test connectivity to departmental gateways
+ping 192.168.40.1
+ping 192.168.40.129
